@@ -53,8 +53,7 @@
 	"scripts": {
 		"build": "webpack --config webpack.config.js"
 	}
-
-				</code></pre>
+	</code></pre>
 			</section>
 			<section>
 				<h2>Usage</h2>
@@ -113,18 +112,18 @@
 			</section>
 			<section>
 					<h2>Loaders</h2>
-					<code>	npm install --save-dev css-loader ts-loader</code>
+					<pre><code>	npm install --save-dev css-loader ts-loader</code></pre>
 					<p>webpack.config.js</p>
 					<pre>
 						<code class="hljs">
 	module.exports = {
-		module: {
-		  rules: [
-			{ test: /\.css$/, use: 'css-loader' },
-			{ test: /\.ts$/, use: 'ts-loader' }
-		  ]
-		}
-	  };
+	 module: {
+	  rules: [
+		{ test: /\.css$/, use: 'css-loader' },
+		{ test: /\.ts$/, use: 'ts-loader' }
+	  ]
+	 }
+	};
 	  </code>
 	  			  </pre>
 			</section>
@@ -136,10 +135,8 @@
 						<code class="hljs">
 	plugins: [
 	new HtmlWebpackPlugin({template: './src/index.html'})
-	  ]
-							
-								  
-					</code>
+	]
+	</code>
 	  			  </pre>
 			</section>
 			<section>
