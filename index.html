@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Webpack presentation</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/night.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>WEPBACK</h1>
+				<p></p>
+				<p>by ANATOLI ALIAKSANDRAU</p>
+				<p>RSSchool2020Q1 student</p>
+			</section>
+			<section><img src="https://habrastorage.org/webt/fl/vw/eh/flvwehnhdu_8wyji37-vai4rxnm.png"></section>
+			<section>
+				<ul>
+					<li>Installation</li>
+					<li>Entry</li>
+					<li>Output</li>
+					<li>Loaders</li>
+					<li>Plugins</li>
+					<li>Mode</li>
+					<li>Browser Compatibility</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Installation</h2>
+				<pre><code>	npm install --save-dev webpack</code></pre>
+				<p>package.json</p>
+				<pre><code>
+	"scripts": {
+		"build": "webpack --config webpack.config.js"
+	}
+
+				</code></pre>
+			</section>
+			<section>
+				<h2>Usage</h2>
+				<h3>Write Your Code</h3>
+				<p>src/index.js</p>
+				<pre><code class="hljs">
+	import bar from './bar';
+
+	bar();
+               </code></pre>			
+							
+							
+							<p>src/bar.js</p>
+							<pre><code class="hljs">
+	export default function bar() {
+ 							  
+	}
+		   </code></pre>		
+			</section>
+			<section>
+				<h2>Usage</h2>
+				<h3>Bundle It</h3>
+				<p>webpack.config.js</p>
+				<pre><code class="hljs">
+	const path = require('path');
+
+	module.exports = {
+	 entry: './src/index.js',
+	 output: {
+	  path: path.resolve(__dirname, 'dist'),
+	  filename: 'bundle.js'
+	 }
+	};
+
+</code></pre>
+			</section>
+			<section>
+				<h2>Usage</h2>
+				<h3>Bundle It</h3>
+				<p>page.html</p>
+				<pre>
+					<code class="hljs">
+	&lt;!doctype html&gt;
+	&lt;html&gt;
+	 &lt;head&gt;
+	 ...
+	 &lt;/head&gt;
+	 &lt;body&gt;
+	  ...
+	  &lt;script src="dist/bundle.js"&gt;&lt/script&gt;
+	 &lt;/body&gt;
+	&lt;/html&gt;
+
+</code>
+						</pre>
+			</section>
+			<section>
+					<h2>Loaders</h2>
+					<code>	npm install --save-dev css-loader ts-loader</code>
+					<p>webpack.config.js</p>
+					<pre>
+						<code class="hljs">
+	module.exports = {
+		module: {
+		  rules: [
+			{ test: /\.css$/, use: 'css-loader' },
+			{ test: /\.ts$/, use: 'ts-loader' }
+		  ]
+		}
+	  };
+	  </code>
+	  			  </pre>
+			</section>
+			<section>
+					<h2>Plugins</h2>
+					<pre><code>	npm install --save-dev html-webpack-plugin</code></pre>
+					<p>webpack.config.js</p>
+					<pre>
+						<code class="hljs">
+	plugins: [
+	new HtmlWebpackPlugin({template: './src/index.html'})
+	  ]
+							
+								  
+					</code>
+	  			  </pre>
+			</section>
+			<section>
+					<h2>Plugins</h2>
+					<p>UnusedFilesWebpackPlugin</p>
+					<pre><code>	npm install --save-dev unused-files-webpack-plugin</code></pre>
+					<p>CaseSensitivePathsPlugin</p>
+					<pre><code>	npm install --save-dev case-sensitive-paths-webpack-plugin</code></pre>
+					<p>CircularDependencyPlugin </p>
+					<pre><code>	npm install --save-dev circular-dependency-plugin</code></pre>
+					<p>SpeedMeasurePlugin</p>
+					<pre><code>	npm install --save-dev speed-measure-webpack-plugin</code></pre>
+			</section>
+			<section>
+					<h2>Hot Module Replacement</h2>
+					<ul>
+						<li>Retain application state which is lost during a full reload</li>
+						<li>Save valuable development time by only updating what's changed</li>
+						<li>Instantly update the browser when modifications are made to CSS/JS in the source code</li>
+					</ul>
+			</section>
+			<section>
+				<h2>Browser </h2>
+				<img src = "https://d4jyn86spyrm8.cloudfront.net/Ska%CC%88rmavbild-2019-02-02-kl.-09.49.53-1024x355.png">
+			</section>
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			hash: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/highlight/highlight.js' },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+	</script>
+</body>
+
+</html>
